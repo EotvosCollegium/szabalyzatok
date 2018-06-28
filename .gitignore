@@ -1,8 +1,10 @@
+# extensions
 *.doc
 *.docx
 *synctex.gz
 *.log
 *.aux
 
+# folders
 Modositas/*
 build/*

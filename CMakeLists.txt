@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.0)
 include(.cmake/UseLATEX.cmake)
 include(.cmake/helper.cmake)
 
-project(szabalyzatok)
+project(szabalyzatok NONE)
 
 add_subdirectory(CHOK)
 add_subdirectory(CTSzK)
