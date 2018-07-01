@@ -4,7 +4,6 @@
 *synctex.gz
 *.log
 *.aux
-
-# folders
+*.pdf
 Modositas/*
 build/*
