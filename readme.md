@@ -68,4 +68,5 @@ ninja
 > Mindenből az x86-64-es változatot, azaz a 64 biteset válasszátok ki [ha nem tudod mit csinálsz](http://www.winability.com/how-to-tell-if-my-windows-is-32-or-64-bit/).
 Ne a forráskódot (source), hanem a futtatható állományt töltsétek le (binary).
 
+> Ha fordítás közben azt mondja a `pdflatex`, hogy nem találja a megadott `tex` fájlt, noha az a megfelelő mappában van, akkor előfordulhat, hogy a `TEXINPUTS` környezeti változó definiálva van, és ki kéne törölni.
 </details>
