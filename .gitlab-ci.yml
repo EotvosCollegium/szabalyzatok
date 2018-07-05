@@ -1,0 +1,11 @@
+before_script:
+  - apt-get update -qq
+  - apt-get install -y -qq cmake ninja-build
+  - apt-get --no-install-recommends install  texlive-base texlive-binaries texlive-latex-base
+  - mkdir build
+  - cd build
+
+build:
+  script:
+    - cmake -G Ninja ..
+    - ninja
