@@ -13,7 +13,8 @@
 1. Feltelepíted a `git`-et. *next, next, next...*
 2. Feltelepíted a `cmake`-et, ügyelve hogy hozzáadódjon a `PATH`-hoz, akár rendszer vagy felhasználói szinten. *next, next, next...*
 3. Bemásolod a `ninja.exe`-ét a `C:\Program Files\ninja\` mappába, majd ezt a [mappád hozzá adod a `PATH` környezeti változóhoz](https://superuser.com/a/985947), akár rendszer akár felhasználói szinten.
-4. Feltelepíted a `TexLive`-ot (simple, big opcióval). *next, next, next...*
+4. Feltelepíted a `TexLive`-ot (simple, big opcióval). *next, next, next...*<br>
+   *[Minimális telepítéshez kövesd ezt...](#minimális-telepítés)*
 5. Kész, yaay.
 
 > *next, next, next...* : A telepítés menetére utal.
@@ -68,3 +69,26 @@ Hasznos weboldalak, ha **nem** a beégetett verzókat szeretnéd telepíteni, ha
 Ne a forráskódot (source), hanem a futtatható állományt töltsétek le (binary).
 
 > Ha fordítás közben azt mondja a `pdflatex`, hogy nem találja a megadott `tex` fájlt, noha az a megfelelő mappában van, akkor előfordulhat, hogy a `TEXINPUTS` környezeti változó definiálva van, és ki kéne törölni.
+
+
+## Minimális telepítés
+
+A telepítés menete kizárólag a `TexLive` telepítésében tér el.
+Annál `custom`, azaz egyedi telepítést válasszuk. És a telepítés során a `basic` séma szerint egy `install collection` nélkül. 
+
+A telepítés után kézzel kell a projekt függőségeit, csomagjait telepítenünk.
+Ehhez nyissunk egy konzolt (tetszőleges helyen) és telepítsünk:
+```bash
+tlmgr install  enumitem titlesec microtype setspace cm-super ec babel-hungarian
+```
+
+Program | Becsült méret
+--- | ---
+Git | 560 Mb
+Ninja | 0,5 Mb
+CMake | 70 Mb
+TexLive | 380 Mb
+
+> *A méretek becsültek, és a TexLive minimális telepítése esetén értendő.*
+
+> *`Git`-ből is érdemes lett volna minimális telepítést alkalmazni...*
