@@ -5,7 +5,7 @@
 
   - [git](https://github.com/git-for-windows/git/releases/download/v2.18.0.windows.1/Git-2.18.0-64-bit.exe)
   - [ninja](https://github.com/ninja-build/ninja/releases/download/v1.8.2/ninja-win.zip)
-  - [cmake](https://cmake.org/files/v3.12/cmake-3.12.0-rc2-win64-x64.zip)
+  - [cmake](https://cmake.org/files/v3.12/cmake-3.12.0-rc2-win64-x64.msi)
   - [TexLive](http://mirror.ctan.org/systems/texlive/tlnet/install-tl-windows.exe)
 
 
@@ -58,8 +58,7 @@ ninja
 
 
 ## Egyéb segítség
-<details>
-  <summary>Hasznos weboldalak, ha **nem** a beégetett verzókat szeretnéd telepíteni, hanem az elérhető legfrissebbet.</summary>
+Hasznos weboldalak, ha **nem** a beégetett verzókat szeretnéd telepíteni, hanem az elérhető legfrissebbet.
   - [git](https://git-scm.com/download/win)
   - [ninja](https://github.com/ninja-build/ninja/releases)
   - [cmake](https://cmake.org/download/)
@@ -69,4 +68,3 @@ ninja
 Ne a forráskódot (source), hanem a futtatható állományt töltsétek le (binary).
 
 > Ha fordítás közben azt mondja a `pdflatex`, hogy nem találja a megadott `tex` fájlt, noha az a megfelelő mappában van, akkor előfordulhat, hogy a `TEXINPUTS` környezeti változó definiálva van, és ki kéne törölni.
-</details>
