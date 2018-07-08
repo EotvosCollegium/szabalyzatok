@@ -1,43 +1,37 @@
 stages:
   - build
-  - deploy
-
-before_script:
-  - apt-get update -qq
-  
-  # installing the tools
-  - apt-get install -y -qq cmake ninja-build lftp
-  
-  # installing TexLive related packages (~~basic schema)
-  - apt-get -y -qq --no-install-recommends install  texlive-base texlive-binaries texlive-latex-base
-  
-  # somehow TexLive depends on xzdec too, so install it
-  - apt-get install xzdec
-  
-  # initialize TexLive package dependancies and folder hierachies if needed
-  - tlmgr init-usertree
-  - tlmgr install  enumitem titlesec microtype setspace cm-super ec babel-hungarian
+#   - deploy
 
 build:
   stage: build
+  cache:
+    paths:
+      - binaries/
+      - build/
   script:
-    - mkdir build
+    - chmod +x .gitlab-ci/install_cache.sh
+    
+    - ./.gitlab-ci/install_cache.sh
+    - source .gitlab-ci/export_paths.sh
+    
+    - if [ ! -d build ]; then mkdir build; fi
     - cd build
     - cmake -G Ninja ..
     - ninja
-    - ls -la release
+    
   artifacts:
     paths:
-    - /builds/luksan/ejc-szabalyzatok/build/release
+    - $(pwd)/build/release
 
-deploy:
-  stage: deploy
-  dependencies:
-    - build
-  only:
-    - cmake_support
-  script:
-    - cd build
-    - echo $CAESAR_URL.$CAESAR_USER
-    - ls -la ~
-    #- lftp -e "mirror -Rev release/ /afs/elte.hu/user/s/steakhal/home/" -u $CAESAR_USER,$CAESAR_PASW $CAESAR_URL
+# deploy:
+#   stage: deploy
+#   dependencies:
+#     - build
+#   only:
+#     - cmake_support
+#   script:
+#     - apt-get install -y -qq lftp
+#     - cd build
+#     - echo $CAESAR_URL.$CAESAR_USER
+#     - ls -la ~
+#     #- lftp -e "mirror -Rev release/ /afs/elte.hu/user/s/steakhal/home/" -u $CAESAR_USER,$CAESAR_PASW $CAESAR_URL
