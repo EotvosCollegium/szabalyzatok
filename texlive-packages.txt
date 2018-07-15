@@ -1,0 +1,7 @@
+enumitem
+titlesec
+microtype
+setspace
+cm-super
+ec
+babel-hungarian
