@@ -5,3 +5,4 @@ setspace
 cm-super
 ec
 babel-hungarian
+hyphen-hungarian

@@ -1,6 +1,5 @@
 stages:
   - build
-  - deploy
 
 build:
   stage: build
@@ -10,31 +9,20 @@ build:
     - apt-get install -y -qq cmake ninja-build
   
     # installing TexLive related packages (~~basic schema)
-    - apt-get -y -qq --no-install-recommends install  texlive-base texlive-binaries texlive-latex-base
+    - apt-get -y -qq --no-install-recommends install  texlive-base texlive-binaries texlive-latex-base texlive-lang-european
   
     # somehow TexLive depends on xzdec too, so install it
     - apt-get install xzdec
   
-    # initialize TexLive package dependancies and folder hierachies if needed
+    # initialize TexLive package dependencies and folder hierarchies if needed
     - tlmgr init-usertree
-    - tlmgr install  $(cat texlive-packages.txt)
-
+    - tlmgr install  $(cat latex_packages.txt)
+  
     - mkdir build
     - cd build
     - cmake -G Ninja ..
     - ninja
   artifacts:
+    name: "$CI_COMMIT_REF_SLUG"
     paths:
-    - /builds/luksan/ejc-szabalyzatok/build/release
-
-deploy:
-  stage: deploy
-  dependencies:
-    - build
-  only:
-    - ci_support_without_caching
-  script:
-    - apt-get update -qq
-    - apt-get install  -y -qq sshpass rsync
-    - ls -la build/release
-    - sshpass -e rsync -avz -e 'ssh -o StrictHostKeyChecking=no' build/release/ $SSHUSER@$SSHURL:/afs/elte.hu/user/s/steakhal/web/
+    - build/release
